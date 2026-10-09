@@ -31,7 +31,7 @@ KDEF 얼굴 사진은 저작권자가 재배포를 제한합니다. 평정 데�
 
 ## PCA
 
-원 과제와 동일하게 공분산 기반 `prcomp()`를 적용했습니다. PC1은 **64.5%**, PC2는 **18.1%**를 설명했으며 두 축의 누적 설명력은 **82.5%**였습니다. PC1에는 trustworthy, caring, responsible, emotionally stable, sociable과 aggressive, mean, weird, threatening이 반대 방향으로 놓였습니다. PC2에는 dominant가 크게 기여했고 aggressive, threatening, confident도 관련되었습니다.
+원본 분석과 동일하게 공분산 기반 `prcomp()`를 적용했습니다. PC1은 **64.5%**, PC2는 **18.1%**를 설명했으며 두 축의 누적 설명력은 **82.5%**였습니다. PC1에는 trustworthy, caring, responsible, emotionally stable, sociable과 aggressive, mean, weird, threatening이 반대 방향으로 놓였습니다. PC2에는 dominant가 크게 기여했고 aggressive, threatening, confident도 관련되었습니다.
 
 이 구조는 기존 연구의 valence/trustworthiness와 dominance라는 2차원 해석과 유사합니다. 다만 이 프로젝트는 연구를 그대로 복제한 것이 아니라, 해당 구조를 참고해 Factor Analysis와 Clustering에서도 유사성이 유지되는지 탐색한 것입니다.
 
