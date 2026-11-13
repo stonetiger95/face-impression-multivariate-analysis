@@ -23,5 +23,3 @@ KDEF 공식 조건은 얼굴 자극의 무단 재배포를 금지합니다. 평�
 
 - KDEF terms: https://kdef.se/faq/using-and-publishing-kdef-and-akdef
 - KDEF copyright holder: Karolinska Institutet, Psychology section
-
-`psychology_data.csv`는 원 과제 폴더에 있었지만 threatening 변수가 빠진 13-trait 변형본이며, 공식 14-trait 파일과 값의 표준화 방식도 다릅니다. 공개 분석 입력으로 사용하지 않았습니다.

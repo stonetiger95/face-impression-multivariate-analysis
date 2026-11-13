@@ -2245,10 +2245,11 @@ kable(round(cluster_centers, 3), caption = &quot;K-means centers on the original
 </tr>
 </tbody>
 </table>
-<p>재현성을 위해 seed를 고정했다. 군집 크기는 25, 17, 24이다. Cluster 1은 상대적으로 긍정적·친사회적, Cluster
-2는 부정적·위협적, Cluster 3은 평균에 가깝고 dominance가 낮은 패턴이다.
-silhouette 또는 bootstrap stability 검증이 없으므로 이 명칭은 확정된
-유형이 아닌 탐색적 요약이다.</p>
+<p>재현성을 위해 seed를 고정했다. 군집 크기는 25, 17, 24이다. Cluster
+1은 상대적으로 긍정적·친사회적, Cluster 2는 부정적·위협적, Cluster 3은
+평균에 가깝고 dominance가 낮은 패턴이다. silhouette 또는 bootstrap
+stability 검증이 없으므로 이 명칭은 확정된 유형이 아닌 탐색적
+요약이다.</p>
 <pre class="r"><code>cluster_colors &lt;- c(&quot;#2c7fb8&quot;, &quot;#d95f0e&quot;, &quot;#31a354&quot;)
 cluster_names &lt;- c(&quot;Positive / prosocial&quot;, &quot;Negative / threatening&quot;, &quot;Middle / low dominance&quot;)
 
@@ -2276,25 +2277,29 @@ dev.off()</code></pre>
 <h2><span class="header-section-number">6.3</span> 군집과 자극 성별</h2>
 <pre class="r"><code>gender_table &lt;- table(cluster = km$cluster, gender = gender)
 gender_test &lt;- chisq.test(gender_table)
-kable(gender_table, caption = &quot;Cluster by stimulus gender&quot;)</code></pre>
+kable(data.frame(Cluster = rownames(gender_table), as.data.frame.matrix(gender_table)), row.names = FALSE, caption = &quot;Cluster by stimulus gender&quot;)</code></pre>
 <table>
 <caption>Cluster by stimulus gender</caption>
 <thead>
 <tr class="header">
+<th align="left">Cluster</th>
 <th align="right">female</th>
 <th align="right">male</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">1</td>
 <td align="right">15</td>
 <td align="right">10</td>
 </tr>
 <tr class="even">
+<td align="left">2</td>
 <td align="right">7</td>
 <td align="right">10</td>
 </tr>
 <tr class="odd">
+<td align="left">3</td>
 <td align="right">11</td>
 <td align="right">13</td>
 </tr>
@@ -2322,7 +2327,8 @@ MLFA exact-fit 부족, 요인 수 선택 방법의 제한, 평균화된 66개 �
 <ul>
 <li>얼굴 자극 66개라는 작은 분석 단위</li>
 <li>참가자 수준 자료가 아닌 평균 평정값 사용</li>
-<li>원 분석을 보존한 공분산 기반 PCA이므로 표준편차가 큰 평정 변수가 더 큰 영향을 받을 수 있음</li>
+<li>원 분석을 보존한 공분산 기반 PCA이므로 표준편차가 큰 평정 변수가 더
+큰 영향을 받을 수 있음</li>
 <li>scree plot과 설명력 중심의 요인 수 결정</li>
 <li>2-factor MLFA exact-fit test의 유의한 결과</li>
 <li>silhouette·bootstrap stability 검증 부재</li>
@@ -2334,7 +2340,7 @@ MLFA exact-fit 부족, 요인 수 선택 방법의 제한, 평균화된 66개 �
 <h1><span class="header-section-number">9</span> Session
 information</h1>
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>## R version 4.6.1 (2026-06-24 ucrt)
+<pre><code>## R version 4.5.1 (2025-06-13 ucrt)
 ## Platform: x86_64-w64-mingw32/x64
 ## Running under: Windows 11 x64 (build 26200)
 ## 
@@ -2342,27 +2348,25 @@ information</h1>
 ##   LAPACK version 3.12.1
 ## 
 ## locale:
-## [1] LC_COLLATE=Korean_Korea.utf8  LC_CTYPE=Korean_Korea.utf8   
-## [3] LC_MONETARY=Korean_Korea.utf8 LC_NUMERIC=C                 
-## [5] LC_TIME=Korean_Korea.utf8    
+## [1] LC_COLLATE=Korean_Korea.utf8  LC_CTYPE=Korean_Korea.utf8    LC_MONETARY=Korean_Korea.utf8
+## [4] LC_NUMERIC=C                  LC_TIME=Korean_Korea.utf8    
 ## 
 ## time zone: Asia/Seoul
 ## tzcode source: internal
 ## 
 ## attached base packages:
-## [1] stats     graphics  grDevices datasets  utils     methods   base     
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] NbClust_3.0.1 readxl_1.5.0  knitr_1.52   
+## [1] NbClust_3.0.1 readxl_1.6.0  knitr_1.52   
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] digest_0.6.39    R6_2.6.1         fastmap_1.2.0    cellranger_1.1.0
-##  [5] xfun_0.60        magrittr_2.0.5   glue_1.8.1       cachem_1.1.0    
-##  [9] tibble_3.3.1     pkgconfig_2.0.3  htmltools_0.5.9  rmarkdown_2.32  
-## [13] lifecycle_1.0.5  cli_3.6.6        vctrs_0.7.3      sass_0.4.10     
-## [17] renv_1.2.4       jquerylib_0.1.4  compiler_4.6.1   tools_4.6.1     
-## [21] pillar_1.11.1    evaluate_1.0.5   bslib_0.12.0     yaml_2.3.12     
-## [25] rlang_1.3.0      jsonlite_2.0.0</code></pre>
+##  [1] digest_0.6.39    R6_2.6.1         fastmap_1.2.0    cellranger_1.1.0 xfun_0.60       
+##  [6] magrittr_2.0.5   glue_1.8.1       cachem_1.1.0     tibble_3.3.1     pkgconfig_2.0.3 
+## [11] htmltools_0.5.9  rmarkdown_2.32   lifecycle_1.0.5  cli_3.6.6        vctrs_0.7.3     
+## [16] sass_0.4.10      renv_1.2.4       jquerylib_0.1.4  compiler_4.5.1   tools_4.5.1     
+## [21] pillar_1.11.1    evaluate_1.0.5   bslib_0.12.0     yaml_2.3.12      jsonlite_2.0.0  
+## [26] rlang_1.3.0</code></pre>
 </div>
 <div id="references" class="section level1" number="10">
 <h1><span class="header-section-number">10</span> References</h1>

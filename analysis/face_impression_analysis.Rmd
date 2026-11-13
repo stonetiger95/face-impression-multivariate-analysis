@@ -330,7 +330,7 @@ include_graphics(file.path(project_root, "figures", "cluster_pca.png"))
 ```{r gender-association}
 gender_table <- table(cluster = km$cluster, gender = gender)
 gender_test <- chisq.test(gender_table)
-kable(gender_table, caption = "Cluster by stimulus gender")
+kable(data.frame(Cluster = rownames(gender_table), as.data.frame.matrix(gender_table)), row.names = FALSE, caption = "Cluster by stimulus gender")
 ```
 
 고정 seed 군집과 자극 성별의 연관은 유의하지 않았다(χ²(2) = `r sprintf("%.2f", unname(gender_test$statistic))`, p = `r sprintf("%.3f", gender_test$p.value)`). 이 분석은 같은 표본으로 군집을 만든 뒤 관계를 살핀 탐색적 보조 결과다. 성별 집단의 일반적 심리 차이나 고정관념의 증거로 확대하지 않는다.
